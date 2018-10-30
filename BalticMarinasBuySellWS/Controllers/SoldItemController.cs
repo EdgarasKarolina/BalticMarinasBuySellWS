@@ -15,7 +15,7 @@ namespace BalticMarinasBuySellWS.Controllers
         public IEnumerable<SoldItem> GetAll()
         {
             SoldItemContext context = HttpContext.RequestServices.GetService(typeof(BalticMarinasBuySellWS.Models.SoldItemContext)) as SoldItemContext;
-            return context.GetAllEvents();
+            return context.GetAllSoldItems();
         }
     }
 }

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
 
 namespace BalticMarinasBuySellWS.Models
 {
@@ -20,7 +20,7 @@ namespace BalticMarinasBuySellWS.Models
             return new MySqlConnection(ConnectionString);
         }
 
-        public List<SoldItem> GetAllEvents()
+        public List<SoldItem> GetAllSoldItems()
         {
             List<SoldItem> list = new List<SoldItem>();
 
@@ -40,7 +40,7 @@ namespace BalticMarinasBuySellWS.Models
                             Type = reader["type"].ToString(),
                             Price = Convert.ToInt32(reader["price"]),
                             Year = reader["year"].ToString(),
-                            Description = reader["type"].ToString(),
+                            Description = reader["description"].ToString(),
                             Sold = Convert.ToInt32(reader["sold"])
                         });
                     }

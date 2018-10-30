@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BalticMarinasBuySellWS.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BalticMarinasBuySellWS.Controllers
@@ -10,12 +11,14 @@ namespace BalticMarinasBuySellWS.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
             return new string[] { "value1", "value2" };
         }
+      
 
         // GET api/values/5
         [HttpGet("{id}")]
