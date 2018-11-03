@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BalticMarinasBuySellWS.Models;
+﻿using BalticMarinasBuySellWS.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace BalticMarinasBuySellWS.Controllers
 {
@@ -11,11 +8,20 @@ namespace BalticMarinasBuySellWS.Controllers
     [ApiController]
     public class SoldItemController : ControllerBase
     {
+        // GET api/solditem
         [HttpGet]
         public IEnumerable<SoldItem> GetAll()
         {
             SoldItemContext context = HttpContext.RequestServices.GetService(typeof(BalticMarinasBuySellWS.Models.SoldItemContext)) as SoldItemContext;
             return context.GetAllSoldItems();
+        }
+
+        // GET api/solditem/5
+        [HttpGet("{id}")]
+        public SoldItem Get(int id)
+        {
+            SoldItemContext context = HttpContext.RequestServices.GetService(typeof(BalticMarinasBuySellWS.Models.SoldItemContext)) as SoldItemContext;
+            return context.GetSoldItemById(id);
         }
     }
 }
