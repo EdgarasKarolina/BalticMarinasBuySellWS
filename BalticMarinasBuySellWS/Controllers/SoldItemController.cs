@@ -18,7 +18,7 @@ namespace BalticMarinasBuySellWS.Controllers
 
         // GET api/solditem/5
         [HttpGet("{id}")]
-        public SoldItem Get(int id)
+        public SoldItem GetById(int id)
         {
             SoldItemContext context = HttpContext.RequestServices.GetService(typeof(BalticMarinasBuySellWS.Models.SoldItemContext)) as SoldItemContext;
             return context.GetSoldItemById(id);

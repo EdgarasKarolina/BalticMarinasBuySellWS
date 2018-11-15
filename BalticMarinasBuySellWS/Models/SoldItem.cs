@@ -7,7 +7,7 @@ namespace BalticMarinasBuySellWS.Models
 {
     public class SoldItem
     {
-        private SoldItemContext context;
+        //private SoldItemContext context;
 
         public int Id { get; set; }
         public string Name { get; set; }

@@ -1,8 +1,7 @@
-﻿using MySql.Data.MySqlClient;
+﻿using BalticMarinasBuySellWS.Utilities;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BalticMarinasBuySellWS.Models
 {
@@ -27,7 +26,7 @@ namespace BalticMarinasBuySellWS.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from sold_items", conn);
+                MySqlCommand cmd = new MySqlCommand(Queries.GetAllSoldItems, conn);
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -56,7 +55,7 @@ namespace BalticMarinasBuySellWS.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from sold_items where id = @id", conn);
+                MySqlCommand cmd = new MySqlCommand(Queries.GetSoldItemById, conn);
                 cmd.Parameters.Add("@id", MySqlDbType.Int16).Value = id;
 
                 using (var reader = cmd.ExecuteReader())
