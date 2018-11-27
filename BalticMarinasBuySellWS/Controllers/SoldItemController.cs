@@ -23,5 +23,21 @@ namespace BalticMarinasBuySellWS.Controllers
             SoldItemContext context = HttpContext.RequestServices.GetService(typeof(BalticMarinasBuySellWS.Models.SoldItemContext)) as SoldItemContext;
             return context.GetSoldItemById(id);
         }
+
+        // POST api/solditem/
+        [HttpPost]
+        public void Post([FromBody] SoldItem soldItem)
+        {
+            SoldItemContext context = HttpContext.RequestServices.GetService(typeof(BalticMarinasBuySellWS.Models.SoldItemContext)) as SoldItemContext;
+            context.CreateSoldItem(soldItem);
+        }
+
+        // GET api/solditem/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            SoldItemContext context = HttpContext.RequestServices.GetService(typeof(BalticMarinasBuySellWS.Models.SoldItemContext)) as SoldItemContext;
+            context.DeleteSoldItemById(id);
+        }
     }
 }
