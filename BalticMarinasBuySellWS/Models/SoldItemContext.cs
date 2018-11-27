@@ -88,6 +88,7 @@ namespace BalticMarinasBuySellWS.Models
                     cmd.Parameters.Add("@price", MySqlDbType.Decimal).Value = soldItem.Price;
                     cmd.Parameters.Add("@madeYear", MySqlDbType.Year).Value = soldItem.MadeYear;
                     cmd.Parameters.Add("@description", MySqlDbType.VarChar).Value = soldItem.Description;
+                    cmd.Parameters.Add("@userId", MySqlDbType.Int16).Value = soldItem.UserId;
 
                     cmd.ExecuteReader();
                 }
