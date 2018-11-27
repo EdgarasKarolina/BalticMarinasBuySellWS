@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace BalticMarinasBuySellWS.Models
+﻿namespace BalticMarinasBuySellWS.Models
 {
     public class SoldItem
     {
-        //private SoldItemContext context;
-
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Type { get; set; }
-        public int Price { get; set; }
-        public string Year { get; set; }
+        public int SoldItemId { get; set; }
+        public string Title { get; set; }
+        public string Category { get; set; }
+        public decimal Price { get; set; }
+        public string MadeYear { get; set; }
         public string Description { get; set; }
-        public int Sold { get; set; }
+        public int UserId { get; set; }
     }
 }

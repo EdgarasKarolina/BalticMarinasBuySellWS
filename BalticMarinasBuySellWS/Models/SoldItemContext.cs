@@ -34,13 +34,13 @@ namespace BalticMarinasBuySellWS.Models
                     {
                         list.Add(new SoldItem()
                         {
-                            Id = Convert.ToInt32(reader["Id"]),
-                            Name = reader["name"].ToString(),
-                            Type = reader["type"].ToString(),
-                            Price = Convert.ToInt32(reader["price"]),
-                            Year = reader["year"].ToString(),
-                            Description = reader["description"].ToString(),
-                            Sold = Convert.ToInt32(reader["sold"])
+                            SoldItemId = Convert.ToInt32(reader["SoldItemId"]),
+                            Title = reader["Title"].ToString(),
+                            Category = reader["Category"].ToString(),
+                            Price = Convert.ToDecimal(reader["Price"]),
+                            MadeYear = reader["MadeYear"].ToString(),
+                            Description = reader["Description"].ToString(),
+                            UserId = Convert.ToInt32(reader["UserId"])
                         });
                     }
                 }
@@ -62,13 +62,13 @@ namespace BalticMarinasBuySellWS.Models
                 {
                     while (reader.Read())
                     {
-                        soldItemById.Id = Convert.ToInt32(reader["Id"]);
-                        soldItemById.Name = reader["name"].ToString();
-                        soldItemById.Type = reader["type"].ToString();
-                        soldItemById.Price = Convert.ToInt32(reader["price"]);
-                        soldItemById.Year = reader["year"].ToString();
-                        soldItemById.Description = reader["description"].ToString();
-                        soldItemById.Sold = Convert.ToInt32(reader["sold"]);
+                        soldItemById.SoldItemId = Convert.ToInt32(reader["SoldItemId"]);
+                        soldItemById.Title = reader["Title"].ToString();
+                        soldItemById.Category = reader["Category"].ToString();
+                        soldItemById.Price = Convert.ToDecimal(reader["Price"]);
+                        soldItemById.MadeYear = reader["MadeYear"].ToString();
+                        soldItemById.Description = reader["Description"].ToString();
+                        soldItemById.UserId = Convert.ToInt32(reader["UserId"]);
                     }
                 }
             }
