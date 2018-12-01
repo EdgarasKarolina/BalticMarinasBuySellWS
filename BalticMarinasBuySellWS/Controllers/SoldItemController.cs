@@ -16,6 +16,14 @@ namespace BalticMarinasBuySellWS.Controllers
             return context.GetAllSoldItems();
         }
 
+        // GET api/solditem
+        [HttpGet("user/{id}")]
+        public IEnumerable<SoldItem> GetAllByUserId(int id)
+        {
+            SoldItemContext context = HttpContext.RequestServices.GetService(typeof(BalticMarinasBuySellWS.Models.SoldItemContext)) as SoldItemContext;
+            return context.GetAllSoldItemsByUserId(id);
+        }
+
         // GET api/solditem/5
         [HttpGet("{id}")]
         public SoldItem GetById(int id)

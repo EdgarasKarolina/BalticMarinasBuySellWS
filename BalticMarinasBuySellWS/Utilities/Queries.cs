@@ -4,6 +4,8 @@
     {
         public const string GetAllSoldItems = "select * from sold_items";
 
+        public const string GetAllSoldItemsByUserId = "select * from sold_items where UserId = @userId";
+
         public const string GetSoldItemById = "select * from sold_items where SoldItemId = @id";
 
         public const string DeleteSoldItemById = "delete from sold_items where SoldItemId = @id";

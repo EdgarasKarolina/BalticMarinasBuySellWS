@@ -48,6 +48,36 @@ namespace BalticMarinasBuySellWS.Models
             return list;
         }
 
+        public List<SoldItem> GetAllSoldItemsByUserId(int id)
+        {
+            List<SoldItem> list = new List<SoldItem>();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(Queries.GetAllSoldItemsByUserId, conn);
+                cmd.Parameters.Add("@userId", MySqlDbType.Int16).Value = id;
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new SoldItem()
+                        {
+                            SoldItemId = Convert.ToInt32(reader["SoldItemId"]),
+                            Title = reader["Title"].ToString(),
+                            Category = reader["Category"].ToString(),
+                            Price = Convert.ToDecimal(reader["Price"]),
+                            MadeYear = reader["MadeYear"].ToString(),
+                            Description = reader["Description"].ToString(),
+                            UserId = Convert.ToInt32(reader["UserId"])
+                        });
+                    }
+                }
+            }
+            return list;
+        }
+
         public SoldItem GetSoldItemById(int id)
         {
             var soldItemById = new SoldItem();
