@@ -1,4 +1,6 @@
 ﻿using BalticMarinasBuySellWS.Models;
+using BalticMarinasBuySellWS.Repositories;
+using BalticMarinasBuySellWS.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -12,40 +14,40 @@ namespace BalticMarinasBuySellWS.Controllers
         [HttpGet]
         public IEnumerable<SoldItem> GetAll()
         {
-            SoldItemContext context = HttpContext.RequestServices.GetService(typeof(BalticMarinasBuySellWS.Models.SoldItemContext)) as SoldItemContext;
-            return context.GetAllSoldItems();
+            ISoldItemRepository repository = HttpContext.RequestServices.GetService(typeof(SoldItemRepository)) as SoldItemRepository;
+            return repository.GetAllSoldItems();
         }
 
         // GET api/solditem
         [HttpGet("user/{id}")]
         public IEnumerable<SoldItem> GetAllByUserId(int id)
         {
-            SoldItemContext context = HttpContext.RequestServices.GetService(typeof(BalticMarinasBuySellWS.Models.SoldItemContext)) as SoldItemContext;
-            return context.GetAllSoldItemsByUserId(id);
+            ISoldItemRepository repository = HttpContext.RequestServices.GetService(typeof(SoldItemRepository)) as SoldItemRepository;
+            return repository.GetAllSoldItemsByUserId(id);
         }
 
         // GET api/solditem/5
         [HttpGet("{id}")]
         public SoldItem GetById(int id)
         {
-            SoldItemContext context = HttpContext.RequestServices.GetService(typeof(BalticMarinasBuySellWS.Models.SoldItemContext)) as SoldItemContext;
-            return context.GetSoldItemById(id);
+            ISoldItemRepository repository = HttpContext.RequestServices.GetService(typeof(SoldItemRepository)) as SoldItemRepository;
+            return repository.GetSoldItemById(id);
         }
 
         // POST api/solditem/
         [HttpPost]
         public void Post([FromBody] SoldItem soldItem)
         {
-            SoldItemContext context = HttpContext.RequestServices.GetService(typeof(BalticMarinasBuySellWS.Models.SoldItemContext)) as SoldItemContext;
-            context.CreateSoldItem(soldItem);
+            ISoldItemRepository repository = HttpContext.RequestServices.GetService(typeof(SoldItemRepository)) as SoldItemRepository;
+            repository.CreateSoldItem(soldItem);
         }
 
         // GET api/solditem/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            SoldItemContext context = HttpContext.RequestServices.GetService(typeof(BalticMarinasBuySellWS.Models.SoldItemContext)) as SoldItemContext;
-            context.DeleteSoldItemById(id);
+            ISoldItemRepository repository = HttpContext.RequestServices.GetService(typeof(SoldItemRepository)) as SoldItemRepository;
+            repository.DeleteSoldItemById(id);
         }
     }
 }

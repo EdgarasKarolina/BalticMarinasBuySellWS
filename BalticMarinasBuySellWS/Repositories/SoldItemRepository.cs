@@ -1,15 +1,17 @@
-﻿using BalticMarinasBuySellWS.Utilities;
+﻿using BalticMarinasBuySellWS.Models;
+using BalticMarinasBuySellWS.Repositories.Interfaces;
+using BalticMarinasBuySellWS.Utilities;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 
-namespace BalticMarinasBuySellWS.Models
+namespace BalticMarinasBuySellWS.Repositories
 {
-    public class SoldItemContext
+    public class SoldItemRepository : ISoldItemRepository
     {
         public string ConnectionString { get; set; }
 
-        public SoldItemContext(string connectionString)
+        public SoldItemRepository(string connectionString)
         {
             this.ConnectionString = connectionString;
         }
