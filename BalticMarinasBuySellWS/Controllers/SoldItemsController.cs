@@ -8,9 +8,9 @@ namespace BalticMarinasBuySellWS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SoldItemController : ControllerBase
+    public class SoldItemsController : ControllerBase
     {
-        // GET api/solditem
+        // GET api/solditems
         [HttpGet]
         public IEnumerable<SoldItem> GetAll()
         {
@@ -18,15 +18,7 @@ namespace BalticMarinasBuySellWS.Controllers
             return repository.GetAllSoldItems();
         }
 
-        // GET api/solditem
-        [HttpGet("user/{id}")]
-        public IEnumerable<SoldItem> GetAllByUserId(int id)
-        {
-            ISoldItemRepository repository = HttpContext.RequestServices.GetService(typeof(SoldItemRepository)) as SoldItemRepository;
-            return repository.GetAllSoldItemsByUserId(id);
-        }
-
-        // GET api/solditem/5
+        // GET api/solditems/5
         [HttpGet("{id}")]
         public SoldItem GetById(int id)
         {
@@ -34,7 +26,15 @@ namespace BalticMarinasBuySellWS.Controllers
             return repository.GetSoldItemById(id);
         }
 
-        // POST api/solditem/
+        // GET api/solditems/users/2
+        [HttpGet("users/{id}")]
+        public IEnumerable<SoldItem> GetAllByUserId(int id)
+        {
+            ISoldItemRepository repository = HttpContext.RequestServices.GetService(typeof(SoldItemRepository)) as SoldItemRepository;
+            return repository.GetAllSoldItemsByUserId(id);
+        }
+
+        // POST api/solditems/
         [HttpPost]
         public void Post([FromBody] SoldItem soldItem)
         {
@@ -42,7 +42,7 @@ namespace BalticMarinasBuySellWS.Controllers
             repository.CreateSoldItem(soldItem);
         }
 
-        // GET api/solditem/5
+        // GET api/solditems/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
