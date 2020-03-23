@@ -21,6 +21,29 @@ namespace BalticMarinasBuySellWS.Repositories
             return new MySqlConnection(ConnectionString);
         }
 
+        public void CreateSoldItem(SoldItem soldItem)
+        {
+            try
+            {
+                using (MySqlConnection conn = GetConnection())
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(Queries.CreateSoldItem, conn);
+                    cmd.Parameters.Add("@title", MySqlDbType.VarChar).Value = soldItem.Title;
+                    cmd.Parameters.Add("@category", MySqlDbType.VarChar).Value = soldItem.Category;
+                    cmd.Parameters.Add("@price", MySqlDbType.Decimal).Value = soldItem.Price;
+                    cmd.Parameters.Add("@madeYear", MySqlDbType.Year).Value = soldItem.MadeYear;
+                    cmd.Parameters.Add("@description", MySqlDbType.VarChar).Value = soldItem.Description;
+                    cmd.Parameters.Add("@userId", MySqlDbType.Int16).Value = soldItem.UserId;
+
+                    cmd.ExecuteReader();
+                }
+            }
+            catch (Exception e)
+            {
+            }
+        }
+
         public List<SoldItem> GetAllSoldItems()
         {
             List<SoldItem> list = new List<SoldItem>();
@@ -105,29 +128,6 @@ namespace BalticMarinasBuySellWS.Repositories
                 }
             }
             return soldItemById;
-        }
-
-        public void CreateSoldItem(SoldItem soldItem)
-        {
-            try
-            {
-                using (MySqlConnection conn = GetConnection())
-                {
-                    conn.Open();
-                    MySqlCommand cmd = new MySqlCommand(Queries.CreateSoldItem, conn);
-                    cmd.Parameters.Add("@title", MySqlDbType.VarChar).Value = soldItem.Title;
-                    cmd.Parameters.Add("@category", MySqlDbType.VarChar).Value = soldItem.Category;
-                    cmd.Parameters.Add("@price", MySqlDbType.Decimal).Value = soldItem.Price;
-                    cmd.Parameters.Add("@madeYear", MySqlDbType.Year).Value = soldItem.MadeYear;
-                    cmd.Parameters.Add("@description", MySqlDbType.VarChar).Value = soldItem.Description;
-                    cmd.Parameters.Add("@userId", MySqlDbType.Int16).Value = soldItem.UserId;
-
-                    cmd.ExecuteReader();
-                }
-            }
-            catch (Exception e)
-            {
-            }
         }
 
         public void DeleteSoldItemById(int id)
