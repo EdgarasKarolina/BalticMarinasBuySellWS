@@ -1,6 +1,6 @@
 # Baltic Marinas Buying and Selling Web Service
 
-Web service build on ASP.NET Core platform which handles all of the comercial activity on the application. The purpose of this 
+Web service build on ASP.NET Core platform which handles all of the commercial activities on the application. The purpose of this 
 API is to serve Baltic Marinas booking web application as a module which handles all the items that are being sold on the
 application by the users. 
 
